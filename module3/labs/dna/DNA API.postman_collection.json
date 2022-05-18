@@ -1,0 +1,154 @@
+{
+	"info": {
+		"_postman_id": "293941fd-81fa-4957-8c0b-0fb822270165",
+		"name": "DNA API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication API by Authorization string",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{authy_string}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"sandboxdnac",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"dna",
+						"system",
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authentication API by Username, password",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Basic ZGV2bmV0dXNlcjpDaXNjbzEyMyE=",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://sandboxdnac.cisco.com/dna/system/api/v1/auth/token",
+					"protocol": "https",
+					"host": [
+						"sandboxdnac",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"dna",
+						"system",
+						"api",
+						"v1",
+						"auth",
+						"token"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all devices",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVjNGU0ZjRjYTdmOTIyMmM4MmRhNjYiLCJhdXRoU291cmNlIjoiaW50ZXJuYWwiLCJ0ZW5hbnROYW1lIjoiVE5UMCIsInJvbGVzIjpbIjVlOGU4OTZlNGQ0YWRkMDBjYTJiNjQ4ZSJdLCJ0ZW5hbnRJZCI6IjVlOGU4OTZlNGQ0YWRkMDBjYTJiNjQ4NyIsImV4cCI6MTY1Mjg2MDM3NSwiaWF0IjoxNjUyODU2Nzc1LCJqdGkiOiI2OWE1ZmExMi0xMzE3LTQ3MzUtYjUwOC03OWZiNTY0YjdiNzciLCJ1c2VybmFtZSI6ImRldm5ldHVzZXIifQ.BTX6JgqgK7UILZLtoa6M4aSblDxJmrqRlGkj2R8o8znCr7AeTWgnLk0Q4lo7HvxaCDeKwWcFhqhqtgNdVYN_Qu-Tq8dKqx-t6-c1jaAkBFF0sauKJmPxhOLnTeu_IXiLcfNrGdz_QENm9DH6cV9V-ZZsRkHlLIWUD9kKGp6mVWa5-gRlEeEK4lL-I5o8bRaszAq8dcouXlM3i5hMOnDTAm0UeHF0Tc0O1QgtxSYJJPkLv0peHkYtaNN9Ic8JdlofxVuSyfAcj3jOm5hl7K1uBdGDPrIUaSHDHj1rkuCwDfIbRhch4UaiM6fEGVWOJpc_XnVX9lnrZ3xQ7jVMgctJsg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandboxdnac.cisco.com/api/v1/network-device",
+					"protocol": "https",
+					"host": [
+						"sandboxdnac",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"network-device"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show a device details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "x-auth-token",
+						"value": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVjNGU0ZjRjYTdmOTIyMmM4MmRhNjYiLCJhdXRoU291cmNlIjoiaW50ZXJuYWwiLCJ0ZW5hbnROYW1lIjoiVE5UMCIsInJvbGVzIjpbIjVlOGU4OTZlNGQ0YWRkMDBjYTJiNjQ4ZSJdLCJ0ZW5hbnRJZCI6IjVlOGU4OTZlNGQ0YWRkMDBjYTJiNjQ4NyIsImV4cCI6MTY1Mjg2MDM3NSwiaWF0IjoxNjUyODU2Nzc1LCJqdGkiOiI2OWE1ZmExMi0xMzE3LTQ3MzUtYjUwOC03OWZiNTY0YjdiNzciLCJ1c2VybmFtZSI6ImRldm5ldHVzZXIifQ.BTX6JgqgK7UILZLtoa6M4aSblDxJmrqRlGkj2R8o8znCr7AeTWgnLk0Q4lo7HvxaCDeKwWcFhqhqtgNdVYN_Qu-Tq8dKqx-t6-c1jaAkBFF0sauKJmPxhOLnTeu_IXiLcfNrGdz_QENm9DH6cV9V-ZZsRkHlLIWUD9kKGp6mVWa5-gRlEeEK4lL-I5o8bRaszAq8dcouXlM3i5hMOnDTAm0UeHF0Tc0O1QgtxSYJJPkLv0peHkYtaNN9Ic8JdlofxVuSyfAcj3jOm5hl7K1uBdGDPrIUaSHDHj1rkuCwDfIbRhch4UaiM6fEGVWOJpc_XnVX9lnrZ3xQ7jVMgctJsg",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "https://sandboxdnac.cisco.com/api/v1/network-device?type=Cisco Catalyst 9300 Switch",
+					"protocol": "https",
+					"host": [
+						"sandboxdnac",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"api",
+						"v1",
+						"network-device"
+					],
+					"query": [
+						{
+							"key": "serialNumber",
+							"value": "FOL25040021",
+							"disabled": true
+						},
+						{
+							"key": "type",
+							"value": "Cisco Catalyst 9300 Switch"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

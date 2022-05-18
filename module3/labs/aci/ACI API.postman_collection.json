@@ -1,0 +1,62 @@
+{
+	"info": {
+		"_postman_id": "4e3c9ef5-0445-4c82-9636-c6e0d225058b",
+		"name": "ACI API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Authentication",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"aaaUser\": {\n        \"attributes\": {\n            \"name\": \"admin\",\n            \"pwd\": \"!v3G@!4@Y\"\n        }\n    }\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://sandboxapicdc.cisco.com/api/aaaLogin.json",
+					"protocol": "https",
+					"host": [
+						"sandboxapicdc",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"api",
+						"aaaLogin.json"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List all tenants",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://sandboxapicdc.cisco.com/api/node/class/fvTenant.json",
+					"protocol": "https",
+					"host": [
+						"sandboxapicdc",
+						"cisco",
+						"com"
+					],
+					"path": [
+						"api",
+						"node",
+						"class",
+						"fvTenant.json"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,0 +1,365 @@
+{
+	"info": {
+		"_postman_id": "76892c4c-9529-4e4e-bb39-ec36f259dedf",
+		"name": "Webex API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "List Rooms",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v1/rooms",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"rooms"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "test",
+							"value": "abc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "List Messages",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v1/messages",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"messages"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "test",
+							"value": "abc",
+							"disabled": true
+						},
+						{
+							"key": "roomId",
+							"value": "Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNDYzN2YyZTAtZDUwNC0xMWVjLTlmYWEtZTExMTRlYjU1ZDgy",
+							"disabled": true
+						},
+						{
+							"key": "personEmail",
+							"value": "devnet.cisco.vn@gmail.com",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a message",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"roomId\": \"Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNDYzN2YyZTAtZDUwNC0xMWVjLTlmYWEtZTExMTRlYjU1ZDgy\",\n    \"text\": \"hahaha\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/messages?roomId=Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vYjllNzhlMTAtZDRmYy0xMWVjLWJkZTktOTdlOWMwYjkxNmYx",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"messages"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "test",
+							"value": "abc",
+							"disabled": true
+						},
+						{
+							"key": "roomId",
+							"value": "Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vYjllNzhlMTAtZDRmYy0xMWVjLWJkZTktOTdlOWMwYjkxNmYx"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a message",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"roomId\": \"Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNDYzN2YyZTAtZDUwNC0xMWVjLTlmYWEtZTExMTRlYjU1ZDgy\",\n    \"text\": \"Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNDYzN2YyZTAtZDUwNC0xMWVjLTlmYWEtZTExMTRlYjU1ZDgy\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/messages/Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL01FU1NBR0UvYWM1OGRkNTAtZDViMy0xMWVjLTg4NzMtNjE4YmNmYzNiYjNm",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"messages",
+						"Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL01FU1NBR0UvYWM1OGRkNTAtZDViMy0xMWVjLTg4NzMtNjE4YmNmYzNiYjNm"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "test",
+							"value": "abc",
+							"disabled": true
+						},
+						{
+							"key": "roomId",
+							"value": "Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vYjllNzhlMTAtZDRmYy0xMWVjLWJkZTktOTdlOWMwYjkxNmYx",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit a message",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"roomId\": \"Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNDYzN2YyZTAtZDUwNC0xMWVjLTlmYWEtZTExMTRlYjU1ZDgy\",\n    \"text\": \"Edit message succesfully\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/messages/Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL01FU1NBR0UvZTAzYTQ0NjAtZDViMy0xMWVjLTg4NzMtNjE4YmNmYzNiYjNm",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"messages",
+						"Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL01FU1NBR0UvZTAzYTQ0NjAtZDViMy0xMWVjLTg4NzMtNjE4YmNmYzNiYjNm"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "test",
+							"value": "abc",
+							"disabled": true
+						},
+						{
+							"key": "roomId",
+							"value": "Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vYjllNzhlMTAtZDRmYy0xMWVjLWJkZTktOTdlOWMwYjkxNmYx",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a Room",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v1/rooms/Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNmEzMjAwNTAtZDUwNC0xMWVjLWIzMDQtMzMxYTg5MTk3NjBh",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"rooms",
+						"Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNmEzMjAwNTAtZDUwNC0xMWVjLWIzMDQtMzMxYTg5MTk3NjBh"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "test",
+							"value": "abc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Room Details",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{base_url}}/v1/rooms/Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNDYzN2YyZTAtZDUwNC0xMWVjLTlmYWEtZTExMTRlYjU1ZDgy",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"rooms",
+						"Y2lzY29zcGFyazovL3VybjpURUFNOnVzLXdlc3QtMl9yL1JPT00vNDYzN2YyZTAtZDUwNC0xMWVjLTlmYWEtZTExMTRlYjU1ZDgy"
+					],
+					"query": [
+						{
+							"key": "test",
+							"value": "abc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create a Room",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer {{token}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"viettel\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{base_url}}/v1/rooms",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"v1",
+						"rooms"
+					],
+					"query": [
+						{
+							"key": "max",
+							"value": "2",
+							"disabled": true
+						},
+						{
+							"key": "test",
+							"value": "abc",
+							"disabled": true
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Authentication API by Authorization string",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": null
+			},
+			"response": []
+		}
+	]
+}
