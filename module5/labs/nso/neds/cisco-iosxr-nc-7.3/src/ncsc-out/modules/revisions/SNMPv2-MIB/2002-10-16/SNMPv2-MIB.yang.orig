@@ -1,0 +1,193 @@
+module SNMPv2-MIB {
+  namespace "http://tail-f.com/ns/mibs/SNMPv2-MIB/200210160000Z";
+  prefix SNMPv2_MIB;
+
+
+
+  import ietf-yang-types {
+    prefix yang;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+  import SNMPv2-TC {
+    prefix SNMPv2_TC;
+  }
+
+  revision 2002-10-16 {
+    description
+      "";
+  }
+
+  container SNMPv2-MIB {
+    container system {
+
+      leaf sysDescr {
+        type sysDescrType;
+
+        config false;
+      }
+      leaf sysObjectID {
+        type yang:object-identifier;
+
+        config false;
+      }
+      leaf sysUpTime {
+        type yang:timeticks;
+
+        config false;
+      }
+      leaf sysContact {
+        type sysContactType;
+
+        default "";
+      }
+      leaf sysName {
+        type sysNameType;
+
+        default "";
+      }
+      leaf sysLocation {
+        type sysLocationType;
+
+        default "";
+      }
+      leaf sysServices {
+        type sysServicesType;
+
+        config false;
+      }
+      leaf sysORLastChange {
+        type yang:timestamp;
+
+        config false;
+      }
+    }
+    container snmp {
+
+      leaf snmpInPkts {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf snmpInBadVersions {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf snmpInBadCommunityNames {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf snmpInBadCommunityUses {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf snmpInASNParseErrs {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf snmpEnableAuthenTraps {
+        type snmpEnableAuthenTrapsType;
+
+        default "disabled";
+      }
+      leaf snmpSilentDrops {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf snmpProxyDrops {
+        type yang:counter32;
+
+        config false;
+      }
+    }
+    container snmpSet {
+
+      leaf snmpSetSerialNo {
+        type SNMPv2_TC:TestAndIncr;
+
+        config false;
+      }
+    }
+    container sysORTable {
+      list sysOREntry {
+        key "sysORIndex";
+
+
+        leaf sysORIndex {
+          type sysORIndexType;
+
+        }
+        leaf sysORID {
+          type yang:object-identifier;
+
+          config false;
+        }
+        leaf sysORDescr {
+          type string {
+            length "0 .. 255";
+          }
+
+          config false;
+        }
+        leaf sysORUpTime {
+          type yang:timestamp;
+
+          config false;
+        }
+      }
+    }
+  }
+
+  typedef sysDescrType {
+    type string {
+      length "min .. 255";
+    }
+  }
+
+  typedef sysContactType {
+    type string {
+      length "min .. 255";
+    }
+  }
+
+  typedef sysNameType {
+    type string {
+      length "min .. 255";
+    }
+  }
+
+  typedef sysLocationType {
+    type string {
+      length "min .. 255";
+    }
+  }
+
+  typedef sysServicesType {
+    type int32 {
+      range "0 .. 127";
+    }
+  }
+
+  typedef snmpEnableAuthenTrapsType {
+    type enumeration {
+      enum "enabled" {
+        value 1;
+      }
+      enum "disabled" {
+        value 2;
+      }
+    }
+  }
+
+  typedef sysORIndexType {
+    type int32 {
+      range "1 .. 2147483647";
+    }
+  }
+}

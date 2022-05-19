@@ -1,0 +1,209 @@
+module SNMP-VIEW-BASED-ACM-MIB {
+  namespace "http://tail-f.com/ns/mibs/SNMP-VIEW-BASED-ACM-MIB/200210160000Z";
+  prefix SNMP_VIEW_BASED_ACM_MIB;
+
+
+
+  import ietf-yang-types {
+    prefix yang;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+  import SNMPv2-TC {
+    prefix SNMPv2_TC;
+  }
+  import SNMP-FRAMEWORK-MIB {
+    prefix SNMP_FRAMEWORK_MIB;
+  }
+
+  revision 2002-10-16 {
+    description
+      "";
+  }
+
+  container SNMP-VIEW-BASED-ACM-MIB {
+    container vacmSecurityToGroupTable {
+      list vacmSecurityToGroupEntry {
+        key "vacmSecurityModel vacmSecurityName";
+
+
+        leaf vacmSecurityModel {
+          type vacmSecurityModelType;
+
+        }
+        leaf vacmSecurityName {
+          type vacmSecurityNameType;
+
+        }
+        leaf vacmGroupName {
+          type vacmGroupNameType;
+          mandatory true;
+
+        }
+        leaf vacmSecurityToGroupStorageType {
+          type SNMPv2_TC:StorageType;
+
+          default "nonVolatile";
+        }
+      }
+    }
+    container vacmAccessTable {
+      list vacmAccessEntry {
+        key "vacmGroupName vacmAccessContextPrefix vacmAccessSecurityModel vacmAccessSecurityLevel";
+
+
+        leaf vacmGroupName {
+          type vacmGroupNameType;
+
+        }
+        leaf vacmAccessContextPrefix {
+          type vacmAccessContextPrefixType;
+
+        }
+        leaf vacmAccessSecurityModel {
+          type SNMP_FRAMEWORK_MIB:SnmpSecurityModel;
+
+        }
+        leaf vacmAccessSecurityLevel {
+          type SNMP_FRAMEWORK_MIB:SnmpSecurityLevel;
+
+        }
+        leaf vacmAccessContextMatch {
+          type vacmAccessContextMatchType;
+
+          default "exact";
+        }
+        leaf vacmAccessReadViewName {
+          type vacmAccessReadViewNameType;
+
+        }
+        leaf vacmAccessWriteViewName {
+          type vacmAccessWriteViewNameType;
+
+        }
+        leaf vacmAccessNotifyViewName {
+          type vacmAccessNotifyViewNameType;
+
+        }
+        leaf vacmAccessStorageType {
+          type SNMPv2_TC:StorageType;
+
+          default "nonVolatile";
+        }
+      }
+    }
+    container vacmViewTreeFamilyTable {
+      list vacmViewTreeFamilyEntry {
+        key "vacmViewTreeFamilyViewName vacmViewTreeFamilySubtree";
+
+
+        leaf vacmViewTreeFamilyViewName {
+          type vacmViewTreeFamilyViewNameType;
+
+        }
+        leaf vacmViewTreeFamilySubtree {
+          type yang:object-identifier;
+
+        }
+        leaf vacmViewTreeFamilyMask {
+          type vacmViewTreeFamilyMaskType;
+
+        }
+        leaf vacmViewTreeFamilyType {
+          type vacmViewTreeFamilyTypeType;
+
+          default "included";
+        }
+        leaf vacmViewTreeFamilyStorageType {
+          type SNMPv2_TC:StorageType;
+
+          default "nonVolatile";
+        }
+      }
+    }
+  }
+
+  typedef vacmContextNameType {
+    type string {
+      length "min .. 32";
+    }
+  }
+
+  typedef vacmSecurityModelType {
+    type int32 {
+      range "1 .. 2147483647";
+    }
+  }
+
+  typedef vacmSecurityNameType {
+    type string {
+      length "1 .. 32";
+    }
+  }
+
+  typedef vacmGroupNameType {
+    type string {
+      length "1 .. 32";
+    }
+  }
+
+  typedef vacmAccessContextPrefixType {
+    type string {
+      length "min .. 32";
+    }
+  }
+
+  typedef vacmAccessContextMatchType {
+    type enumeration {
+      enum "exact" {
+        value 1;
+      }
+      enum "prefix" {
+        value 2;
+      }
+    }
+  }
+
+  typedef vacmAccessReadViewNameType {
+    type string {
+      length "min .. 32";
+    }
+  }
+
+  typedef vacmAccessWriteViewNameType {
+    type string {
+      length "min .. 32";
+    }
+  }
+
+  typedef vacmAccessNotifyViewNameType {
+    type string {
+      length "min .. 32";
+    }
+  }
+
+  typedef vacmViewTreeFamilyViewNameType {
+    type string {
+      length "1 .. 32";
+    }
+  }
+
+  typedef vacmViewTreeFamilyMaskType {
+    type tailf:hex-list {
+      pattern "(((([0-9A-Fa-f]{2}):){0,15}([0-9A-Fa-f]{2}))){0,1}";
+      tailf:value-length "0 .. 16";
+    }
+  }
+
+  typedef vacmViewTreeFamilyTypeType {
+    type enumeration {
+      enum "included" {
+        value 1;
+      }
+      enum "excluded" {
+        value 2;
+      }
+    }
+  }
+}

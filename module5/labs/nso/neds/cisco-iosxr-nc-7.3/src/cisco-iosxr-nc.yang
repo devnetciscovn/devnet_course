@@ -1,0 +1,18 @@
+module cisco-iosxr-nc {
+  yang-version 1.1;
+  namespace "http://tail-f.com/ns/ned-id/cisco-iosxr-nc";
+  prefix cisco-iosxr-nc;
+
+  import tailf-common {
+    prefix tailf;
+  }
+
+  import tailf-ncs-ned {
+    prefix ned;
+  }
+
+  identity cisco-iosxr-nc {
+    tailf:abstract;
+    base ned:netconf-ned-id;
+  }
+}

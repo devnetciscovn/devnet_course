@@ -1,0 +1,33 @@
+devices authgroups group iosxe-sandbox
+default-map remote-name developer
+default-map remote-password C1sco12345
+
+
+devices device iosxe
+address   sandbox-iosxe-latest-1.cisco.com
+port      22
+authgroup iosxe-sandbox
+device-type cli ned-id cisco-ios-cli-6.74
+device-type cli protocol ssh
+state admin-state unlocked
+
+
+devices authgroups group iosxr-sandbox
+default-map remote-name admin
+default-map remote-password C1sco12345
+
+devices device iosxr
+address   sandbox-iosxr-1.cisco.com
+port      22
+authgroup iosxr-sandbox
+device-type cli ned-id cisco-iosxr-cli-7.33
+device-type cli protocol ssh
+state admin-state unlocked
+
+
+devices device iosxr-netconf
+address   sandbox-iosxr-1.cisco.com
+port      830
+authgroup iosxr-sandbox
+device-type netconf ned-id cisco-iosxr-nc-7.3
+state admin-state unlocked

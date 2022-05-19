@@ -1,0 +1,40 @@
+module SNMP-MPD-MIB {
+  namespace "http://tail-f.com/ns/mibs/SNMP-MPD-MIB/200210140000Z";
+  prefix SNMP_MPD_MIB;
+
+
+
+  import ietf-yang-types {
+    prefix yang;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+
+  revision 2002-10-14 {
+    description
+      "";
+  }
+
+  container SNMP-MPD-MIB {
+    config false;
+    container snmpMPDStats {
+
+      leaf snmpUnknownSecurityModels {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf snmpInvalidMsgs {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf snmpUnknownPDUHandlers {
+        type yang:counter32;
+
+        config false;
+      }
+    }
+  }
+}
