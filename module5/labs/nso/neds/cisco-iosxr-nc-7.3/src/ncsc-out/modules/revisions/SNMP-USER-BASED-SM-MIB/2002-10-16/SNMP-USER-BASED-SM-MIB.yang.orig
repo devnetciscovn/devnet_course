@@ -1,0 +1,146 @@
+module SNMP-USER-BASED-SM-MIB {
+  namespace "http://tail-f.com/ns/mibs/SNMP-USER-BASED-SM-MIB/200210160000Z";
+  prefix SNMP_USER_BASED_SM_MIB;
+
+
+
+  import ietf-yang-types {
+    prefix yang;
+  }
+  import tailf-common {
+    prefix tailf;
+  }
+  import SNMPv2-TC {
+    prefix SNMPv2_TC;
+  }
+  import SNMP-FRAMEWORK-MIB {
+    prefix SNMP_FRAMEWORK_MIB;
+  }
+
+  revision 2002-10-16 {
+    description
+      "";
+  }
+
+  container SNMP-USER-BASED-SM-MIB {
+    container usmStats {
+
+      config false;
+      leaf usmStatsUnsupportedSecLevels {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf usmStatsNotInTimeWindows {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf usmStatsUnknownUserNames {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf usmStatsUnknownEngineIDs {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf usmStatsWrongDigests {
+        type yang:counter32;
+
+        config false;
+      }
+      leaf usmStatsDecryptionErrors {
+        type yang:counter32;
+
+        config false;
+      }
+    }
+    container usmUserTable {
+      list usmUserEntry {
+        key "usmUserEngineID usmUserName";
+        unique "usmUserEngineID usmUserSecurityName";
+
+
+        leaf usmUserEngineID {
+          type SNMP_FRAMEWORK_MIB:SnmpEngineID;
+
+        }
+        leaf usmUserName {
+          type usmUserNameType;
+
+        }
+        leaf usmUserSecurityName {
+          type SNMP_FRAMEWORK_MIB:SnmpAdminString;
+          mandatory true;
+
+        }
+        leaf usmUserCloneFrom {
+          type SNMPv2_TC:RowPointer;
+
+        }
+        leaf usmUserAuthProtocol {
+          type SNMPv2_TC:AutonomousType;
+
+          default "1.3.6.1.6.3.10.1.1.1";
+        }
+        leaf usmUserAuthKeyChange {
+          type KeyChange;
+
+        }
+        leaf usmUserOwnAuthKeyChange {
+          type KeyChange;
+
+        }
+        leaf usmUserPrivProtocol {
+          type SNMPv2_TC:AutonomousType;
+
+          default "1.3.6.1.6.3.10.1.2.1";
+        }
+        leaf usmUserPrivKeyChange {
+          type KeyChange;
+
+        }
+        leaf usmUserOwnPrivKeyChange {
+          type KeyChange;
+
+        }
+        leaf usmUserPublic {
+          type usmUserPublicType;
+
+        }
+        leaf usmUserStorageType {
+          type SNMPv2_TC:StorageType;
+
+          default "nonVolatile";
+        }
+        leaf usmUserAuthKey {
+          type KeyChange;
+        }
+        leaf usmUserPrivKey {
+          type KeyChange;
+        }
+      }
+    }
+  }
+
+  typedef KeyChange {
+    type tailf:hex-list {
+      pattern "(((([0-9A-Fa-f]{2}):)*([0-9A-Fa-f]{2}))){0,1}";
+    }
+  }
+
+  typedef usmUserNameType {
+    type string {
+      length "1 .. 32";
+    }
+  }
+
+  typedef usmUserPublicType {
+    type tailf:hex-list {
+      pattern "(((([0-9A-Fa-f]{2}):){0,31}([0-9A-Fa-f]{2}))){0,1}";
+      tailf:value-length "min .. 32";
+    }
+  }
+}

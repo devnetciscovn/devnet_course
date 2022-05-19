@@ -1,0 +1,237 @@
+cisco-iosxr_netconf v7.3.2 [2021-10-20]
+================================================================================
+
+Corrections:
+
+  N/A
+
+Enhancements:
+
+  N/A
+
+Known issues:
+
+ ----------------------------------------
+ CSCvs09900
+
+ Symptoms: Config of non-existing interface will not move to pre
+ config in some cases
+
+ Conditions: Config of non-existing interface without any config item
+ underneath it. The non-existing interface will not move to pre
+ config.
+
+ Workarounds: Don't config any non-exist interface without any item
+ underneath the interface. For example.
+
+ Instead of:
+ config
+ interface TenGigi 1/0/0/0
+ commit
+
+ Change to:
+ config
+ interface TenGigi 1/0/0/0
+ description empty interface
+ commit
+
+ ----------------------------------------
+ CSCvw84169
+
+ Symptoms: NETCONF: Error when deleting LSP password
+
+ Conditions: NSO sends a request with both merge and delete in the
+ same request.
+
+ Workarounds: If delete comes first then merge will work.
+
+ ----------------------------------------
+ CSCvx40891
+
+ Symptoms: NETCONF: edit-config adding policy-map fails with "No such
+ process" error
+
+ Conditions: Configuring a policy-map with aaa authorization as an
+ event leads to this issue, when closing tags of "ActionRule",
+ "Class", "Event" are hot while encoding XML Request to QoS bag. Hence
+ when in the case of aaa authorization policy action, checking for any
+ of the below tag to proceed with commit.
+
+ Workarounds: No workaround available.
+ 
+ ----------------------------------------
+ CSCvz17894
+
+ Symptoms: TPA "allow-entries" cannot be deleted using netconf.
+
+ Conditions: Currently unclear; investigations still in progress.
+
+ Workarounds: Use CLI/XML to delete unwanted configuration.
+ 
+----------------------------------------
+
+YANG model changes since 7.3.1:
+
+  New modules:
+  Cisco-IOS-XR-asr9k-apm-src-flexr-cfg
+  Cisco-IOS-XR-asr9k-ep-port-mode-cfg
+  Cisco-IOS-XR-asr9k-fab-cfg
+  Cisco-IOS-XR-asr9k-fia-cfg
+  Cisco-IOS-XR-asr9k-lc-breakout-port-cfg
+  Cisco-IOS-XR-asr9k-lc-configmode-cfg
+  Cisco-IOS-XR-asr9k-lc-ep-breakout-port-cfg
+  Cisco-IOS-XR-asr9k-lc-ethctrl-cfg
+  Cisco-IOS-XR-asr9k-lc-pwrglide-cfg
+  Cisco-IOS-XR-asr9k-ptp-pd-cfg
+  Cisco-IOS-XR-asr9k-xbar-cfg
+  Cisco-IOS-XR-infra-fti-cfg
+  Cisco-IOS-XR-infra-script-mgmt-cfg
+  Cisco-IOS-XR-ncs5500-coherent-portmode-cfg
+  Cisco-IOS-XR-optics-dac-cfg
+  Cisco-IOS-XR-sysadmin-skywarp-envmon-types
+  Cisco-IOS-XR-sysadmin-skywarp-envmon-ui
+  Cisco-IOS-XR-sysadmin-xrv9k-envmon-types
+  Cisco-IOS-XR-sysadmin-xrv9k-envmon-ui
+  Cisco-IOS-XR-um-event-manager-cfg
+  Cisco-IOS-XR-um-event-manager-policy-map-cfg
+  Cisco-IOS-XR-um-hw-module-profile-cfg
+
+  Removed modules:
+  Cisco-IOS-XR-sysadmin-clear-iosxrwbd
+  Cisco-IOS-XR-sysadmin-controllers-iosxrwbd
+  Cisco-IOS-XR-sysadmin-envmon-types
+  Cisco-IOS-XR-sysadmin-envmon-ui
+  Cisco-IOS-XR-sysadmin-ethsw-esdma-cli-iosxrwbd
+  Cisco-IOS-XR-sysadmin-ethsw-esdma-mlap-connectivity-info-iosxrwbd
+  Cisco-IOS-XR-sysadmin-ethsw-esdma-mlap-iosxrwbd
+  Cisco-IOS-XR-sysadmin-fabric-driver-sfe-iosxrwbd
+  Cisco-IOS-XR-sysadmin-fabric-iosxrwbd
+  Cisco-IOS-XR-sysadmin-fabric-mgr-fgid-iosxrwbd
+  Cisco-IOS-XR-sysadmin-fabric-mgr-fsdb-aggregator-iosxrwbd
+  Cisco-IOS-XR-sysadmin-fabric-mgr-fsdb-server-iosxrwbd
+  Cisco-IOS-XR-sysadmin-fabric-qsfpdd
+  Cisco-IOS-XR-sysadmin-system-cluster
+
+  Changed nodes:
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-fia-hw-profile-cfg}hw-module-profile-config/profile/segment-routing/srv6/mode/mode-type
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-npu-power-profile-sf-d-cfg}npu-hw-module-profile-config/profile/npu-power-profile/card-type/fabric-card/power-mode
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-npu-power-profile-sf-d-cfg}npu-hw-module-profile-config/profile/npu-power-profile/card-type/line-card-locations/line-card-location
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-npu-power-profile-sf-f-cfg}npu-hw-module-profile-config/profile/npu-power-profile/card-type/fixed-board/power-mode
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/delay-name-profile-interfaces/delay-name-profile-interface/probe/protocol/protocol-type
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/delay-name-profile-sr-policies/delay-name-profile-sr-policy/probe/protocol/protocol-type
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/delay-profile-interface/probe/protocol/protocol-type
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/delay-profile-rsvp-te/probe/protocol/protocol-type
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/delay-profile-sr-policy/probe/protocol/protocol-type
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-subscriber-nal-cfg}subscriber-cnbng-nal-locs/subscriber-cnbng-nal-loc
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-um-mpls-ldp-cfg}mpls/ldp/mldp/address-families/address-family/recursive-fec
+
+  Removed nodes:
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-config-mda-cfg}active-nodes/active-node/Cisco-IOS-XR-optics-driver-quad-cfg:node/Cisco-IOS-XR-optics-driver-quad-cfg:acts/Cisco-IOS-XR-optics-driver-quad-cfg:act
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-config-mda-cfg}active-nodes/active-node/Cisco-IOS-XR-optics-driver-quad-cfg:node/Cisco-IOS-XR-optics-driver-quad-cfg:acts/Cisco-IOS-XR-optics-driver-quad-cfg:act/Cisco-IOS-XR-optics-driver-quad-cfg:quad-configs/Cisco-IOS-XR-optics-driver-quad-cfg:quad-config
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg}interface-configurations/interface-configuration/Cisco-IOS-XR-portmode-cfg:port-mode/Cisco-IOS-XR-portmode-cfg:cpri-info/Cisco-IOS-XR-portmode-cfg:framing
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg}interface-configurations/interface-configuration/Cisco-IOS-XR-portmode-cfg:port-mode/Cisco-IOS-XR-portmode-cfg:cpri-info/Cisco-IOS-XR-portmode-cfg:mapping
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-ifmgr-cfg}interface-configurations/interface-configuration/Cisco-IOS-XR-portmode-cfg:port-mode/Cisco-IOS-XR-portmode-cfg:cpri-info/Cisco-IOS-XR-portmode-cfg:rate
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg}dhcpv6/profiles/profile/proxy/vrfs/vrf
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-ipv6-new-dhcpv6d-cfg}dhcpv6/profiles/profile/proxy/vrfs/vrf/helper-addresses/helper-address
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-npu-power-profile-sf-d-cfg}npu-hw-module-profile-config/profile/npu-power-profile/card-type/line-card-locations/line-card-location/line-card-node-id
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-npu-power-profile-sf-d-cfg}npu-hw-module-profile-config/profile/npu-power-profile/card-type/line-card-locations/line-card-location/location-string
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/delay-name-profile-rsvp-tes/delay-name-profile-rsvp-te
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/maximum-pps
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/protocol/pm-mpls/delay-measurement/unauthenticated/mpls-timestamp1
+  /{http://cisco.com/ns/yang/Cisco-IOS-XR-perf-meas-cfg}performance-measurement/protocol/pm-mpls/delay-measurement/unauthenticated/mpls-timestamp2
+
+
+cisco-iosxr_netconf v7.3.1.2 [2021-04-09]
+================================================================================
+
+Corrections:
+
+  - Netsim must use yang and not tmp-yang directory, otherwise device
+    creation will fail.
+    (CXRNC-31)
+
+Enhancements:
+
+  N/A
+
+Known issues:
+
+  Same as in 7.3.1, see below.
+
+YANG model changes:
+
+  N/A
+
+
+cisco-iosxr_netconf v7.3.1.1 [2021-03-24]
+================================================================================
+
+Internal patch release, no changes in the delivery itself.
+
+
+cisco-iosxr_netconf v7.3.1 [2021-03-04]
+================================================================================
+
+Corrections:
+
+  N/A
+
+Enhancements:
+
+  N/A
+
+Known issues:
+
+ ----------------------------------------
+ CSCvs09900
+
+ Symptoms: Config of non-existing interface will not move to pre
+ config in some cases
+
+ Conditions: Config of non-existing interface without any config item
+ underneath it. The non-existing interface will not move to pre
+ config.
+
+ Workarounds: Don't config any non-exist interface without any item
+ underneath the interface. For example.
+
+ Instead of:
+ config
+ interface TenGigi 1/0/0/0
+ commit
+
+ Change to:
+ config
+ interface TenGigi 1/0/0/0
+ description empty interface
+ commit
+
+ ----------------------------------------
+ CSCvw84169
+
+ Symptoms: NETCONF: Error when deleting LSP password
+
+ Conditions: NSO sends a request with both merge and delete in the
+ same request.
+
+ Workarounds: If delete comes first then merge will work.
+
+ ----------------------------------------
+ CSCvx40891
+
+ Symptoms: NETCONF: edit-config adding policy-map fails with "No such
+ process" error
+
+ Conditions: Configuring a policy-map with aaa authorization as an
+ event leads to this issue, when closing tags of "ActionRule",
+ "Class", "Event" are hot while encoding XML Request to QoS bag. Hence
+ when in the case of aaa authorization policy action, checking for any
+ of the below tag to proceed with commit.
+
+ Workarounds: No workaround available.
+ 
+ ----------------------------------------
+
+YANG model changes:
+
+  N/A

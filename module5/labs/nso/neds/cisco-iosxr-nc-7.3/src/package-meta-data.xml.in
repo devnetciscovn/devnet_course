@@ -1,0 +1,15 @@
+<ncs-package xmlns="http://tail-f.com/ns/ncs-packages">
+  <name>cisco-iosxr</name>
+  <package-version>7.3.2</package-version>
+  <description>NED package for Cisco IOS XR NETCONF</description>
+  <ncs-min-version>5.4</ncs-min-version>
+  <component>
+    <name>cisco-iosxr</name>
+    <ned>
+      <netconf/>
+      <device>
+        <vendor>Cisco</vendor>
+      </device>
+    </ned>
+  </component>
+</ncs-package>

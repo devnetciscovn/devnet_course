@@ -1,0 +1,21 @@
+================================================================================
+
+This NED supports the UM-preferred-super-set YANG library, and has
+been verified with the following device families:
+
+  - asr9000
+  - ncs5500
+  - xrv9000
+
+Known issues:
+
+  The interface model contains support for preconfigured interfaces.
+  This means that an interface can change state from "pre" to "act"
+  e.g. when some required hardware is plugged into the device. Such
+  out-of-band change will render NSO out of sync with the device, and
+  requires e.g. a subsequent NSO sync-from to synchronize.
+
+  To avoid this, preconfigured interfaces should not be used. This
+  also means that when configuring an <active>act</active> interface,
+  all hardware requirements must be fulfilled, otherwise the interface
+  will transform to <active>pre</active>.

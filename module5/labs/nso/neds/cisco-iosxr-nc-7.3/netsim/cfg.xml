@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<config xmlns="http://tail-f.com/ns/config/1.0">
+  <!-->
+    <vm xmlns="http://www.cisco.com/ns/yang/Cisco-IOS-XR-sysadmin-vm">
+      <config>
+        <hw-profile>
+          <profile>vrr</profile>
+        </hw-profile>
+      </config>
+    </vm>
+  <-->
+</config>
