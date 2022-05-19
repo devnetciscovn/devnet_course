@@ -66,7 +66,7 @@ def main():
 
     div {
         margin-top: 100px;
-        margin-left: 500px;
+        margin-left: 400px;
     }
     
     </style>

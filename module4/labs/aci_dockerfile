@@ -1,0 +1,7 @@
+FROM ubuntu
+RUN apt-get update
+RUN apt-get install -y python3 python3-pip
+RUN pip3 install requests
+COPY aci.py /aci.py
+RUN ["chmod", "+x", "aci.py"]
+CMD ["python3", "aci.py"]
