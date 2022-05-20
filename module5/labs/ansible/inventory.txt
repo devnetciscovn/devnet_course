@@ -4,8 +4,22 @@ ansible_user=admin
 ansible_password=C1sco12345
 ansible_network_os=cisco.iosxr.iosxr
 
-[iosxr]
-router1 ansible_host='sandbox-iosxr-1.cisco.com'
+[iosxr-sandbox] #Group
+router1 ansible_host='sandbox-iosxr-1.cisco.com' #hosts
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 [iosxe:vars]
 

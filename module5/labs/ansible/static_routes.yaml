@@ -1,0 +1,33 @@
+---
+- name: 'Configuring Static Routes on IOS XR router'
+  hosts: iosxr
+  gather_facts: no
+  tasks:
+    - name: Verify connectivity
+      ping:
+    - name: Configuring static routes
+      cisco.iosxr.iosxr_static_routes: 
+        config:
+          - address_families:
+            - afi: ipv4
+              safi: unicast
+              routes: 
+                - dest: 10.0.0.0/24
+                  next_hops:
+                    - forward_router_address: 192.168.1.1
+                    - forward_router_address: 192.168.2.1
+                - dest: 10.0.11.0/24
+                  next_hops:
+                    - forward_router_address: 192.168.1.1
+                    - forward_router_address: 192.168.2.1
+
+    - name: Verify configuration change
+      cisco.iosxr.iosxr_command:
+        commands: 
+          - show run router static
+          - show route static
+
+      register: static_route_output
+
+    - debug:
+        var: static_route_output.stdout_lines

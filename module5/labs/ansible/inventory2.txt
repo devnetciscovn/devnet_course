@@ -1,0 +1,17 @@
+[iosxr:vars]
+ansible_user=admin 
+ansible_password=C1sco12345 
+ansible_connection=ansible.netcommon.network_cli 
+ansible_network_os=cisco.iosxr.iosxr
+
+[iosxr]
+router1 ansible_host=sandbox-iosxr-1.cisco.com 
+
+[iosxe:vars]
+ansible_user=developer
+ansible_password=C1sco12345
+ansible_connection=ansible.netcommon.network_cli
+ansible_network_os=cisco.ios.ios
+
+[iosxe]
+router2 ansible_host=sandbox-iosxe-latest-1.cisco.com
